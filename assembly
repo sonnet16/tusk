@@ -1,0 +1,26 @@
+.MODEL SMALL
+.STACK 100H
+.DATA 
+
+.CODE
+
+MAIN PROC
+    MOV AH,1
+    INT 21H 
+    MOV BL,AL
+    INT 21H
+    MOV BH,AL
+    CMP BL,BH
+    MOV AH,2
+    JNBE ELSE
+    MOV DL,BL
+    JMP D
+    ELSE:
+    MOV DL,BH
+    D:
+    INT 21H
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+ENDP MAIN
+
